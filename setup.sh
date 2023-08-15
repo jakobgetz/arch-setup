@@ -28,6 +28,9 @@ mount /dev/sda1 /boot/efi
 grub-install --target=x86_64-efi --bootloader-id=arch
 grub-mkconfig -o /boot/grub/grub.cfg
 
+echo "INFO: Download assets"
+pacman -S adobe-source-code-pro-fonts
+
 echo "INFO: Configure window manger"
 echo "INFO: Using 2880x1800"
 pacman -S xorg xorg-xinit
