@@ -33,6 +33,8 @@ echo "INFO: Using 2880x1800"
 pacman -S xorg xorg-xinit
 pacman -S qtile
 pacman -S alacritty
+mkdir /home/jakob/.config
+mkdir /home/jakob/.config/qtile
 mv xinitrc .xinitrc
 mv qtile.config.py /home/jakob/.config/qtile/config.py
 mkdir /home/jakob/.config/alacritty
