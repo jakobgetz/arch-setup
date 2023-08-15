@@ -2,11 +2,14 @@
 # 
 # Originally based of https://freecodecamp.org/news/how-to-install-arch-linux/#how-to-manage-packages-using-packman
 
+echo "INFO: Set root password"
+passwd
+
 echo "INFO: Create my user"
 useradd -m -G wheel jakob
+passwd jakob
 rm /etc/sudoers
 mv sudoers /etc/sudoers
-echo "INFO: Dont forget to set a password"
 
 echo "INFO: Update system"
 pacman -Syu
