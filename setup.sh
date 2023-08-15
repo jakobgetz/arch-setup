@@ -8,14 +8,15 @@ rm /etc/sudoers
 mv sudoers /etc/sudoers
 echo "INFO: Dont forget to set a password"
 
+echo "INFO: Update system"
+pacman -Syu
+
 echo "INFO: Configure network"
+pacman -S networkmanager
 rm /etc/host
 mv host /etc/host
 rm /etc/hosts
 mv hosts /etc/hosts
-
-echo "INFO: Update system"
-pacman -Syu
 
 echo "INFO: Configure boot loader"
 pacman -S grub efibootmgr
