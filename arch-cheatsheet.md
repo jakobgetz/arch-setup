@@ -5,21 +5,21 @@ The Arch Cheatsheet. A lot of these concepts also apply to other unix-like opera
 ## shell
 ### become superuser
 For some of theese commands you need to type `sudo` in front of them to work if you are not the superuser.
-```java
+```
 su // becoming the superuser
 ```
 
 ### Basic
 ### get Information
-```java
+```
 hostnamectl // get basic information about the server
 ```
 ### execute scripts
-```java
+```
 source <path-to-script>
 ```
 ### misc
-```java
+```
 <command> | <command>       // route out from one command as input to other command
 <command> >> <path-to-file> // route stdout to a file
 <command> &                 // execute command in background
@@ -33,7 +33,7 @@ date                        // get current date and time
 ping <ip-address>           // pin an ip address
 ```
 ### Navigation
-```java
+```
 cd <location>
 /* you can especially use the following characters for <location>
  .. if you want to get one step out
@@ -43,7 +43,7 @@ cd <location>
 open <path-to-file>(+)   // folders will be opend in finder, files will be opened with their default application
 ```
 ### get information about the filesystem 
-```java
+```
 pwd                 // show current location
 ls <location>       // shows all visible files in folder
 ls -a <location>    // shows ALL files in folder
@@ -52,24 +52,25 @@ ls -i <location>    // shows the filesnames with their Inode numbers
 locate <filename>   // find a specific file in the system
 ```
 ### creating stuff
-```java
+```
 mkdir <path-to-file>(+) // creates directory(s)
 touch <path-to-file>(+) // creates file(s), or just touches a already existing file, which results in update of last accessed date
 ```
 ### removing stuff
-```java
+```
 rm <path-to-file>(+)     // deleting files(s)
 rm -rf <path-to-file>(+)  // deleting folder(s)
 ```
 ### moving/renaming stuff
-```java
-mv <startlocation>/<name> <endlocation/name> //
-// also used for renaming
+```
+mv <startlocation>/<name> <endlocation/name> // also used for renaming
+ln <file> <newfile>                          // create second link to file (reference count goes up)
+ln -s <file> <linkfile>                      // create soft link. This points to original file
 ```
 
 ### Environment variables
 ### general
-```java
+```
 printenv                        // get a list of all environment variables
 printenv <NAME>                 // get value of specific variable
 export <NAME>=<value>           // set a environment variable
@@ -83,7 +84,7 @@ unset <NAME>                    // delete a variable
 
 ### permanently save information for all sessions
 To permanently save stuff you have to add it to your .bash_profile (or .profile or .zshrc or what ever shell you are using) file, located in your user directory
-```java
+```
 export <NAME>=<value>    // set environment variables
 alias <NAME>="<command>" // make aliases for commands
 ```
@@ -95,7 +96,7 @@ alias <NAME>="<command>" // make aliases for commands
 * First Group of three chars: Access rights for Owner
 * Second Group of three chars: Access rights for the group
 * Third Group of three chars: Access rights for everyone else (other)
-```java
+```
 chmod <who><+|-><permission> <filename>
 // <who> = `u` for user, `g` for group, `o` for other
 // + | - = add permission or remove permission
@@ -103,7 +104,7 @@ chmod <who><+|-><permission> <filename>
 ```
 
 ### Processes
-```java
+```
 ps                       // list all running processes in current terminal session
 ps x                     // list all running processes systemwide
 ps -He                   // list all processes with relationship
@@ -118,7 +119,7 @@ ps aux                   // list all processes with useful information
 * `T` process is stopped
 `PPID` is partent process id, `UID` user id of user who started the process
 
-```java
+```
 kill <pid>               // kill process
 kill -9 <pid>            // force kill proces
 pkill <processname>      // kill process
@@ -126,7 +127,7 @@ pkill <processname>      // kill process
 
 ### Systemd
 Init process is process with pid. Is responsible for managing the other processes.
-```java
+```
 systemctl --type=service                // lists all units
 systemctl list-unit-files               // list unit files
 systemctl status <unit>                 // get the status of a unit
@@ -136,13 +137,13 @@ systemctl start <unit>                  // start a unit
 ```
 
 ### New user
-```java
+```
 useradd <username>       // create new user `-m` to create home directory for user, `-G` to give user specific group
 password <username>      // set password for that user
 ```
 
 ### Storage Mediums
-```java
+```
 fdisk -l                      // list connected disks
 lsblk                         // list connected block devices and partitions
 fdisk <disk>                  // edit disk partition table (partition disk, format)
@@ -154,14 +155,14 @@ mkfs.ext4 <partition>         // format a partition in EXT4
 ```
 
 ### Fonts
-```java
+```
 fc-cache -fv             // scan /usr/share/fonts directory
 fc-list                  // list all fonts on the system
 ```
 
 ### Pacman
 Installing programs, see which programms are installed, update programs (only on Linux). Use homebrew for this when you are on mac
-```java
+```
 pacman -S <packagename>+       // install a package or uprade it if it is already installed
 pacman -Rns <packagename>+     // remove a package (-n with config files, -s and dependencies)
 pacman -Qdtq | pacman -Rns -   // remove all unnecessary packages
@@ -174,7 +175,7 @@ pacman -Qe                     // list all explicitly installed packages
 ## Programms
 ### xorg
 Xorg is the most popular window server amongst linux users (alternative Wayland)
-```java
+```
 // Install
 pacman -S xorg xorg-xinit // xinit is a script which starts the Window Server
 
@@ -190,7 +191,7 @@ Alacritty is a terminal emulator. It requires a window server running like xorg.
 
 ### xrandr
 Uitility to set size, orientation and reflection of the outputs for a screen. (Use for size of screen in VirtualBox)
-```java
+```
 // Install
 pacman -S xrandr
 
@@ -203,19 +204,19 @@ xrandr --output <display> --mode <name>  // set display to specific mode, hence 
 ```
 
 ### http requests
-```java
+```
 curl <url>                      // get request
 curl --data <data> <url>        // post request
 curl -X PUT --data <data> <url> // put request
 curl -X DELETE <url>            // delete request
 ```
 ### ftp requests
-```java
+```
 curl -T <file> ftp:<url>        // upload file
 curl -O ftp:<url>               // download file
 ```
 ### flags
-```java
+```
 /*
 Flags:
 -i                      include header
@@ -230,7 +231,7 @@ Flags:
 
 ### ssh
 connect and log in to servers with ssh to controll them remotely. ssh keys are located in the ~/.ssh directory
-```java
+```
 ssh <username>@<url>                            // connect
 exit                                            // disconnect
 ssh-keygen                                      // generate ssh key to ~/.ssh, you only need one
@@ -240,7 +241,7 @@ scp <file>(+) <username>@<url>                  // copy file(s) and folder(s) fr
 
 ### sftp
 transfer files to other server via a secure connection. (better than ftp)
-```java
+```
 sftp <username>@<url>           // connect
 /* after you are connected you can access the local computer with the prefix l (e.g. `lcd` to navigate on your local computer) */
 
