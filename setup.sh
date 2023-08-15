@@ -3,7 +3,7 @@
 # Originally based of https://freecodecamp.org/news/how-to-install-arch-linux/#how-to-manage-packages-using-packman
 
 echo "INFO: Create my user..."
-adduser useradd -m -G wheel jakob
+useradd -m -G wheel jakob
 rm /etc/sudoers
 mv sudoers /etc/sudoers
 echo "INFO: Dont forget to set a password"
