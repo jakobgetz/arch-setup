@@ -18,7 +18,7 @@ echo "INFO: Update system"
 pacman -Syu
 
 echo "INFO: Configure boot loader"
-pacman -S grup efibootmgr
+pacman -S grub efibootmgr
 mkdir /boot/efi
 mount /dev/sda1 /boot/efi
 grub-install --target=x86_64-efi --bootloader-id=arch
