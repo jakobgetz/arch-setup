@@ -9,7 +9,6 @@ mv sudoers /etc/sudoers
 echo "INFO: Dont forget to set a password"
 
 echo "INFO: Configure network"
-pacman -S networkmanager
 rm /etc/host
 mv host /etc/host
 rm /etc/hosts
