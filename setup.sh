@@ -20,6 +20,7 @@ rm /etc/host
 mv host /etc/host
 rm /etc/hosts
 mv hosts /etc/hosts
+systemctl enable NetworkManager
 
 echo "INFO: Configure boot loader"
 pacman -S grub efibootmgr
@@ -43,6 +44,11 @@ mv qtile.config.py /home/jakob/.config/qtile/config.py
 mkdir /home/jakob/.config/alacritty
 mv alacritty.yml /home/jakob/.config/alacritty/alacritty.yml
 
-echo "INFO: Configure keyboard"
-echo "INFO: Using Mac de layout"
-setxkbmap -model macintosh -layout de
+echo "INFO: Install openssh"
+pacman -S openssh
+
+echo "INFO: Install neovim"
+pacman -S neovim
+
+echo "INFO: INstall chromium"
+pacman -S chromium
