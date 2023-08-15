@@ -2,7 +2,7 @@
 # 
 # Originally based of https://freecodecamp.org/news/how-to-install-arch-linux/#how-to-manage-packages-using-packman
 
-echo "INFO: Create my user..."
+echo "INFO: Create my user"
 useradd -m -G wheel jakob
 rm /etc/sudoers
 mv sudoers /etc/sudoers
@@ -13,6 +13,9 @@ rm /etc/host
 mv host /etc/host
 rm /etc/hosts
 mv hosts /etc/hosts
+
+echo "INFO: Update system"
+pacman -Syu
 
 echo "INFO: Configure boot loader"
 pacman -S grup efibootmgr
