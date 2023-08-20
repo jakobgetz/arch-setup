@@ -21,7 +21,10 @@ source <path-to-script>
 ### misc
 ```
 <command> | <command>       // route out from one command as input to other command
-<command> >> <path-to-file> // route stdout to a file
+<command> > <path-to-file>  // route stdout to file (overwrite file)
+<command> >> <path-to-file> // route stdout to a file (append to file)
+<command> 2> <path-to-file> // route stderr to a file (overwrite file)
+<command> 2>> <path-to-file>// route stderr to a file (append to file)
 <command> &                 // execute command in background
 <command> && <command>      // execute two commands sequentially
 $<VARIABLE_NAME>            // access variables
@@ -49,7 +52,9 @@ ls <location>       // shows all visible files in folder
 ls -a <location>    // shows ALL files in folder
 ls -l <location>    // shows files in a "long list" format
 ls -i <location>    // shows the filesnames with their Inode numbers
-locate <filename>   // find a specific file in the system
+dirname <filename>  // get the directory name of a file
+readlink <filename> // get the absolute path
+stat <filename>     // get information like size about a file
 ```
 ### creating stuff
 ```
@@ -68,8 +73,14 @@ ln <file> <newfile>                          // create second link to file (refe
 ln -s <file> <linkfile>                      // create soft link. This points to original file
 ```
 
+### compare stuff
+```
+diff <file1> <file2>            // compares two files
+diff -u <file1> <file2>         // compares two files with more verbose output
+diff -r <dir1> <dir2>           // compares two directoies recursively
+```
+
 ### Environment variables
-### general
 ```
 printenv                        // get a list of all environment variables
 printenv <NAME>                 // get value of specific variable
@@ -77,10 +88,10 @@ export <NAME>=<value>           // set a environment variable
 export <NAME>=$<NAME>:<value>   // append to environment variable
 unset <NAME>                    // delete a variable
 ```
-### Importent Environment variables
 * `PATH` list of all locations where executable binaries are
 * `USER` current logged in user
-* `HOME` currnet logged in user path
+* `HOME` current logged in user path
+* `BASH` path to bash executable
 
 ### permanently save information for all sessions
 To permanently save stuff you have to add it to your .bash_profile (or .profile or .zshrc or what ever shell you are using) file, located in your user directory
@@ -173,6 +184,13 @@ pacman -Qe                     // list all explicitly installed packages
 ```
 
 ## Programms
+
+### ncdu
+Ncdu is a file manager to see what files are using up all the space on your system
+```
+sudo ncdu /
+```
+
 ### xorg
 Xorg is the most popular window server amongst linux users (alternative Wayland)
 ```
@@ -269,3 +287,6 @@ All available keymaps for the system
 
 ### /etc/sudoers
 Control which users get sudo privileges
+
+### /dev/null
+Redirect output here to effectively discard it
