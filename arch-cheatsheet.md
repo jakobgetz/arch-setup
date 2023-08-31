@@ -33,7 +33,7 @@ man <programname>           // read manual page
 cat <path-to-file>          // output file contents
 echo (<variable>|<value>)   // output some value
 date                        // get current date and time
-ping <ip-address>           // pin an ip address
+ping <ip-address>           // ping an ip address
 ```
 ### Navigation
 ```
@@ -80,6 +80,20 @@ diff -u <file1> <file2>         // compares two files with more verbose output
 diff -r <dir1> <dir2>           // compares two directoies recursively
 ```
 
+### test
+Evaluate a boolean expression to `0` or `1`. `test <expr>` and '[ <expr> ]' are synonymous. `[[ <expr> ]]` is an enhanced version of test. (Important whitespaces between <expr> and [])
+```
+test <expr> && <command>        // execute certain command only under condition
+test -e <path>                  // check if path exists
+test -f <path>                  // check if path is a file
+test -f <path>                  // check if path is a directory
+test -r <path>                  // check if file is readable
+<string> = <string>             // string comparison
+<string> != <string>
+<number> -eq <number>           // numeric comparison: -eq -ne -lt -le -gt -ge
+-a -o !                         // logical operators
+```
+
 ### Environment variables
 ```
 printenv                        // get a list of all environment variables
@@ -112,6 +126,8 @@ chmod <who><+|-><permission> <filename>
 // <who> = `u` for user, `g` for group, `o` for other
 // + | - = add permission or remove permission
 // permission = r | w | x
+umask                   // see current umask value
+umask <code>            // set default permissions for newly created files
 ```
 
 ### Processes
@@ -217,7 +233,7 @@ pacman -S xrandr
 xrandr                                   // list
 cvt <width> <height>                     // print modeline for creating a new mode with desired width and height
 xrandr --newmode <modeline>              // create new mode
-xrandr --addmode <display> <name>        // add new mode to display
+xrandr --addmode <display> <name>        // add new mode to display (<name> is typically the specific resolution)
 xrandr --output <display> --mode <name>  // set display to specific mode, hence to specific resolution
 ```
 
@@ -271,13 +287,13 @@ get <path-to-file>           // download file from remote
 
 ## Important files and folders
 ### /etc/fstab
-TODO!
+Configure which storage volumes gets mounted to which file path on startup
 
 ### /etc/hosts
-TODO!
+Local DNS configure which hostname gets resolved to which IP address. Syntax: `<ip-address> <hostname>`
 
 ### /etc/host
-TODO!
+The hostname for the current machine
 
 ### /usr/share/fonts
 Put all your font files in there to install the respective font.
@@ -287,6 +303,15 @@ All available keymaps for the system
 
 ### /etc/sudoers
 Control which users get sudo privileges
+
+### /etc/profile
+A bash script that gets run once you startup the computer. It sets environment variables and other configuration for all users.
+
+### ~/.bash_profile, ~/.profile
+A bash script that gets run once you log into your user. It sets environment variables and other configurations for your user. If `.bash_profile` is present it gets run and ommits `.profile`.
+
+### .bashrc
+A bash script thats gets run for every new terminal session. It is usually a good place to configure aliases and stuff.
 
 ### /dev/null
 Redirect output here to effectively discard it

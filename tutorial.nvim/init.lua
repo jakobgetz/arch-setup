@@ -1,0 +1,7 @@
+require "jakobgetz.remap"
+require "jakobgetz.options"
+require "jakobgetz.plugins"
+require "jakobgetz.colorscheme"
+require "jakobgetz.cmp"
+require "jakobgetz.misc"
+require "jakobgetz.lsp"
