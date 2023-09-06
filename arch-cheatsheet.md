@@ -31,6 +31,7 @@ $<VARIABLE_NAME>            // access variables
 clear                       // clear terminal page
 man <programname>           // read manual page
 cat <path-to-file>          // output file contents
+less <path-to-file>         // output file content in less viewer
 echo (<variable>|<value>)   // output some value
 date                        // get current date and time
 ping <ip-address>           // ping an ip address
@@ -78,6 +79,13 @@ ln -s <file> <linkfile>                      // create soft link. This points to
 diff <file1> <file2>            // compares two files
 diff -u <file1> <file2>         // compares two files with more verbose output
 diff -r <dir1> <dir2>           // compares two directoies recursively
+```
+
+### sed
+sed is used to replace the contents of a file. Replacement syntax is like this: `<modifier>/<search-pattern>/<replacement-pattern>/<modifier>`
+```
+sed <regex> <file>          // prints the replaced string
+sed -i <regex> <file>       // replace the content and write back fo file
 ```
 
 ### test
@@ -284,6 +292,9 @@ put <path-to-file>           // upload file to remote machine (regex is allowed)
 get <path-to-file>           // download file from remote
 // -r  flag is needed to copy directoies
 ```
+
+### Podman
+file /etc/containers/registries.conf to configure registries
 
 ## Important files and folders
 ### /etc/fstab
